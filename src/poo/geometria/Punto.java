@@ -2,7 +2,7 @@ package poo.geometria;
 
 import poo.util.Mat;
 
-public class Punto {
+public class Punto implements Cloneable{
 
     private double x, y; //variabili di istanza o campi. Rappresentano lo stato di un punto
 
@@ -32,6 +32,7 @@ public class Punto {
     }
 
     public static void main( String[] args ) {
+        /*
         Punto p1 = new Punto(5, 7);
         Punto p2 = new Punto(10, 2);
         Punto p3 = new Punto(p1);
@@ -40,6 +41,11 @@ public class Punto {
         System.out.println("La distanza tra " + p1 + " e " + p2 + " ,è " + p1.distanza(p2));
         System.out.println("La distanza tra " + p1 + " e " + p2 + " ,è " + distanza(p1, p2));
         System.out.println(p1.equals(p3));
+         */
+        Punto p1 = new Punto();
+        Punto p2 = p1.clone();
+        System.out.println(p2.equals(p1));
+
     }
 
     @Override
@@ -84,5 +90,17 @@ public class Punto {
 
     }
 
+
+    @Override
+    public Punto clone() {
+        try {
+            Punto clone = (Punto) super.clone();
+            clone.x=x;
+            clone.y=y;
+            return clone;
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
+    }
 } //Punto
 
